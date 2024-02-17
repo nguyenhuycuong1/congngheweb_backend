@@ -8,6 +8,7 @@ const cart = (router) => {
     jwtAction.checkToken,
     cartController.updateQuantity
   );
+  router.delete("/carts/delete_ordered", cartController.deleteCartOrdered);
   router.delete(
     "/carts/:cart_item_id",
     jwtAction.checkToken,

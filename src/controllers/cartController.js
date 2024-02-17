@@ -105,5 +105,26 @@ const deleteCartItem = async (req, res) => {
     return res.status(500).json({ error: error });
   }
 };
+const deleteCartOrdered = async (req, res) => {
+  const data = req.body;
+  try {
+    await db.Cart_Item.destroy({
+      where: { id: data },
+    });
+    return res.status(200).json({
+      message: "successful",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      error: error,
+    });
+  }
+};
 
-module.exports = { addCartItem, getCartItems, updateQuantity, deleteCartItem };
+module.exports = {
+  addCartItem,
+  getCartItems,
+  updateQuantity,
+  deleteCartItem,
+  deleteCartOrdered,
+};

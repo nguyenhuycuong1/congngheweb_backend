@@ -32,6 +32,7 @@ const checkToken = async (req, res, next) => {
       user_id: decoded.user_id,
       username: decoded.username,
       role: decoded.role,
+      iat: decoded.iat,
     };
     next();
   } catch (error) {

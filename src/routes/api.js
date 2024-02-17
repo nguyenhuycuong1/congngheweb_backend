@@ -5,11 +5,13 @@ var product = require("./product");
 var auth = require("./auth");
 var user = require("./user");
 var cart = require("./cart");
+var order = require("./order");
 brand(router);
 product(router);
 auth(router);
 user(router);
 cart(router);
+order(router);
 router.get("/", function (req, res, next) {
   res.send("respond with a resource");
 });

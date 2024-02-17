@@ -15,6 +15,16 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
       },
+      payment: {
+        type: Sequelize.STRING,
+      },
+      note: {
+        type: Sequelize.STRING(3000),
+      },
+      status: {
+        type: Sequelize.STRING,
+        defaultValue: "pending",
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

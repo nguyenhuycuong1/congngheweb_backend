@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       user_id: DataTypes.UUID,
       address: DataTypes.STRING,
+      payment: DataTypes.STRING,
+      note: DataTypes.STRING(3000),
+      status: { type: DataTypes.STRING, defaultValue: "pending" },
     },
     {
       sequelize,
