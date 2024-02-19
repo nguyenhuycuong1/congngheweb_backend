@@ -8,6 +8,16 @@ const order = (router) => {
     orderController.createOrderLine
   );
   router.get(
+    "/orders/status_order/:status",
+    jwtAction.checkToken,
+    orderController.getOrderByStatus
+  );
+  router.get(
+    "/orders/revenue",
+    jwtAction.checkToken,
+    orderController.revenueForMonth
+  );
+  router.get(
     "/orders/:user_id",
     jwtAction.checkToken,
     orderController.getOrderByUserId
@@ -21,6 +31,11 @@ const order = (router) => {
     "/orders/cancel/:order_id",
     jwtAction.checkToken,
     orderController.cancelOrder
+  );
+  router.put(
+    "/orders/delivery/:order_id",
+    jwtAction.checkToken,
+    orderController.deliveryOrder
   );
 };
 

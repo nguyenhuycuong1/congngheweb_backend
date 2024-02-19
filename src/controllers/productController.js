@@ -2,9 +2,16 @@ var db = require("../models/index");
 
 const getAllProducts = async (req, res) => {
   const products = await db.Product.findAll({
+    include: {
+      model: db.Review,
+      attributes: {
+        exclude: ["createdAt", "updatedAt", "comment", "user_id", "product_id"],
+      },
+    },
     attributes: {
       exclude: ["createdAt", "updatedAt"],
     },
+    order: [["id", "ASC"]],
   });
   return res.status(200).json({
     message: "success",
@@ -18,6 +25,17 @@ const getProductById = async (req, res) => {
     where: {
       id: prodId,
     },
+    include: {
+      model: db.Review,
+      include: {
+        model: db.User,
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "password"],
+        },
+      },
+      order: [["createdAt", "DESC"]],
+    },
+
     attributes: {
       exclude: ["createdAt", "updatedAt"],
     },
@@ -81,10 +99,31 @@ const getProductsSearchResult = async (req, res) => {
   });
 };
 
+const updateProductInfo = async (req, res) => {
+  const product_id = req.params.product_id;
+  const { product_name, description, price } = req.body;
+  await db.Product.update(
+    {
+      product_name: product_name,
+      description: description,
+      price: price,
+    },
+    {
+      where: {
+        id: product_id,
+      },
+    }
+  );
+  return res.status(200).json({
+    message: "successful",
+  });
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   getProductsByBrand,
   getProductsByPrice,
   getProductsSearchResult,
+  updateProductInfo,
 };
