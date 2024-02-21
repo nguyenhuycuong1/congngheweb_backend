@@ -3,7 +3,7 @@
     "username": "root",
     "password": null,
     "database": "congngheweb",
-    "host": "127.0.0.1",
+    "host": "database-1.crg6okis8ja6.ap-southeast-1.rds.amazonaws.com",
     "dialect": "mysql",
     "logging": false
   },
@@ -11,14 +11,14 @@
     "username": "root",
     "password": null,
     "database": "congngheweb",
-    "host": "127.0.0.1",
+    "host": "database-1.crg6okis8ja6.ap-southeast-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "congngheweb",
-    "host": "127.0.0.1",
+    "host": "database-1.crg6okis8ja6.ap-southeast-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
