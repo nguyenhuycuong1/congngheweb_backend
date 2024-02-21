@@ -60,6 +60,16 @@ const getProductsByBrand = async (req, res) => {
       attributes: {
         exclude: ["brand_id", "createdAt", "updatedAt"],
       },
+      include: {
+        model: db.Review,
+        include: {
+          model: db.User,
+          attributes: {
+            exclude: ["createdAt", "updatedAt", "password"],
+          },
+        },
+        order: [["createdAt", "DESC"]],
+      },
     },
   });
   return res.status(200).json({
@@ -75,6 +85,16 @@ const getProductsByPrice = async (req, res) => {
     order: [["price", o]],
     attributes: {
       exclude: ["createdAt", "updatedAt"],
+    },
+    include: {
+      model: db.Review,
+      include: {
+        model: db.User,
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "password"],
+        },
+      },
+      order: [["createdAt", "DESC"]],
     },
   });
   return res.status(200).json({
