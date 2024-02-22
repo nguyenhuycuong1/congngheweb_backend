@@ -12,7 +12,7 @@ var indexRouter = require("./routes/index");
 var apiRouter = require("./routes/api");
 
 const corsOptions = {
-  origin: "http://13.215.162.142:3000/",
+  origin: "http://13.215.162.142:3000",
   credentials: true,
   optionsSuccessStatus: 200,
 };
