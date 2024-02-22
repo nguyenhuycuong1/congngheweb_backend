@@ -12,11 +12,10 @@ var indexRouter = require("./routes/index");
 var apiRouter = require("./routes/api");
 
 const corsOptions = {
-  origin: process.env.FRONTEND_URL,
+  origin: "*",
   credentials: true,
   optionsSuccessStatus: 200,
 };
-
 var app = express();
 
 // view engine setup
